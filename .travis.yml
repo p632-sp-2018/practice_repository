@@ -3,6 +3,9 @@ group: stable
 jdk:
 - oraclejdk8
 
+machine:
+  environment:
+    CC_TEST_REPORTER_ID: 96ae089d0a21104da1c39f0c0fd272b22a763c132e328a215cd90689f735eee2
     
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
