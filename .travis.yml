@@ -14,6 +14,7 @@ before_script:
 install:
 - mvn -N io.takari:maven:wrapper
 - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+- mvn -e -X clean install -P create-jacoco-reports
 
 
 
