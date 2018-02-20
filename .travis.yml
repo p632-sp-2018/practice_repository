@@ -3,24 +3,20 @@ group: stable
 jdk:
 - oraclejdk8
 
-machine:
-  environment:
-    CC_TEST_REPORTER_ID: 543aa0047e87ebf201f3a9a4d023c3eb8e68b5096ec2c51c7d6945f4132414c8
+env:
+  global:
+    - CC_TEST_REPORTER_ID= 543aa0047e87ebf201f3a9a4d023c3eb8e68b5096ec2c51c7d6945f4132414c8
     
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
-  - cc-test-reporter after-build -r 543aa0047e87ebf201f3a9a4d023c3eb8e68b5096ec2c51c7d6945f4132414c8
-
 
 # git strips the wrapper jar file so we have to force its download during the build
 install:
 - mvn -N io.takari:maven:wrapper
 - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 - mvn -e -X clean install -P create-jacoco-reports
-
-
 
 
 script: 
